@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Controle de Lubrificantes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        /* Garantir que a página ocupa toda a altura */
+        html, body {
+            height: 100%;
+        }
+        /* Definir altura mínima para a área de conteúdo */
+        .content {
+            min-height: calc(100vh - 130px);
+        }
+
+        /* Garantir que o cabeçalho e o rodapé estejam colados nos bordas */
+        header, footer {
+            width: 100%
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header class="bg-dark text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Sistema de controle de Estoque</h1>
+            <p class="lead">Gerencia eficientemente suas matérias-primas e produtos acabados com facilidade e controle</p>
+        </div>
+    </header>
+
+    <!-- Corpo principal com cards de navegação -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center">
+                <!-- Card 1: Gerenciar Matérias-Primas -->
+                <div class="col-md-6 mb-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <i class="fas fa-boxes fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Gerenciar Matérias-Primas</h5>
+                        <p class="card-text">Adicione, edite e exclua matérias-primas utilizadas no produção.</p>
+                        <a href="{{ url_for('main.listar_materias_primas') }}" class="btn btn-primary">Acessar</a>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Card 2: Gerenciar Produtos Acabados -->
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <i class="fas fa-industry fa-3x mb-3 text-success"></i>
+                            <h5 class="card-title">Gerenciar Produtos Acabados</h5>
+                            <p class="card-text">Monitore e gerencie seus produtos finais de forma eficiente.</p>
+                            <a href="{{ url_for('main.listar_produtos_acabados') }}" class="btn btn-success">Acessar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 - Sistem de Controle de Estoque de Lubrificantes</p>
+    </footer>
+
+    <!-- Scripts do Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

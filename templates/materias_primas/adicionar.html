@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Matéria-Prima</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Adicionar Matéria-Prima</h2>
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="nome">Nome da Matéria-Prima</label>
+                <input type="text" name="nome" id="nome" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="quantidade">Quantidade em Estoque</label>
+                <input type="number" step="0.01" name="quantidade" id="quantidade" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success">Adicionar</button>
+            <a href="{{ url_for('main.listar_materias_primas') }}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

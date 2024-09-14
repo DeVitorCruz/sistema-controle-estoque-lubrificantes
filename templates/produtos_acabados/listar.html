@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos Acabados</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Lista de Produtos Acabados</h2>
+        <a href="{{ url_for('main.adicionar_produto_acabado') }}" class="btn btn-success mb-3">Adicionar Produto Acabado</a>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Quantidade em Estoque</th>
+                    <th>Matérias-Primas Consumidas</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto_consumo in produtos_consumo %}
+                    <tr>
+                        <td>{{ produto_consumo.produto.id }}</td>
+                        <td>{{ produto_consumo.produto.nome }}</td>
+                        <td>{{ produto_consumo.produto.quantidade }}</td>
+                        <td>
+                            <ul>
+                                {% for materia in produto_consumo.materias_consumidas %}
+                                    <li>Matéria-prima: {{ materia.nome }}, Quantidade consumida: {{ materia.quantidade_consumida }}</li>
+                                {% else %}
+                                    <li>Nenhum produto encontrado</li>    
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>
+                            <a href="{{ url_for('main.editar_produto_acabado', id=produto_consumo.produto.id) }}" class="btn btn-warning btn-sm">Editar</a>
+                            <form action="{{ url_for('main.deletar_produto_acabado', id=produto_consumo.produto.id) }}" method="POST" style="display: inline;">
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja deletar este produto acabado?');">Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('main.index') }}" class="btn btn-secondary">Voltar</a>
+    </div>
+</body>
+</html>

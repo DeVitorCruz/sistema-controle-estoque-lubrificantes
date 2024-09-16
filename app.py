@@ -1,7 +1,6 @@
 from flask import Flask
 from models import db, MateriaPrima, ProdutoAcabado, consumo
 
-
 app = Flask(__name__)
 app.config.from_object('config.Config')
 
